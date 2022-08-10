@@ -1,19 +1,19 @@
 import ping from 'ping';
 import fetch from 'node-fetch';
 import logUpdate from 'log-update';
-import color from 'colors';
+import 'colors';
 const url = 'https://steamcdn-a.akamaihd.net/apps/sdr/network_config.json';
 
 (async function () {
-  logUpdate(color.yellow('Fetching Servers'));
+  logUpdate('Fetching Servers'.yellow);
   const servers = await fetchServers();
-  logUpdate(color.green(`Fetched ${servers.length} Servers`));
+  logUpdate(`Fetched ${servers.length} Servers`.green);
   logUpdate.done();
   for (const server of servers) {
-    logUpdate(color.green('Pinging'), color.bgWhite(server.name));
+    logUpdate('Pinging'.green, `${server.name}`.bgWhite);
     let ping = await pingServer(server.relays[ 0 ]);
-    if (ping === 'unknown') { logUpdate(color.red(`${server.name} did not respond`)) }
-    else { logUpdate(color.bold(`${server.name}`), color.italic(`${ping}ms`)); }
+    if (ping === 'unknown') { logUpdate(`${server.name} did not respond`.red) }
+    else { logUpdate(`${server.name}`.bold, `${ping}ms`.italic); }
     logUpdate.done();
   }
 })();
