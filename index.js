@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import ping from 'ping';
 import fetch from 'node-fetch';
 import logUpdate from 'log-update';
