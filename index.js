@@ -4,7 +4,9 @@ import logUpdate from 'log-update';
 import 'colors';
 const url = 'https://steamcdn-a.akamaihd.net/apps/sdr/network_config.json';
 
-(async function () {
+main();
+
+async function main() {
   logUpdate('Fetching Servers'.yellow);
   const servers = await fetchServers();
   logUpdate(`Fetched ${servers.length} Servers`.green);
@@ -16,7 +18,7 @@ const url = 'https://steamcdn-a.akamaihd.net/apps/sdr/network_config.json';
     else { logUpdate(`${server.name}`.bold, `${ping}ms`.italic); }
     logUpdate.done();
   }
-})();
+};
 
 async function pingServer(ip) {
   return (await ping.promise.probe(ip)).time;
@@ -36,3 +38,5 @@ async function fetchServers() {
   });
   return servers;
 }
+
+export default main;
