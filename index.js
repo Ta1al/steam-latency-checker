@@ -4,7 +4,7 @@ import ping from 'ping';
 import fetch from 'node-fetch';
 import logUpdate from 'log-update';
 import 'colors';
-const url = 'https://steamcdn-a.akamaihd.net/apps/sdr/network_config.json';
+const url = 'https://api.steampowered.com/ISteamApps/GetSDRConfig/v1?appid=730';
 
 main();
 
